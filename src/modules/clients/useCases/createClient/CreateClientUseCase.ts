@@ -9,7 +9,8 @@ export class CreateClientUseCase {
         const clientExists = await prisma.clients.findFirst({
             where: {
                 username: {
-                    mode: "insensitive"
+                    equals: username,
+                    mode: 'insensitive'
                 }
             }
         })
@@ -17,16 +18,13 @@ export class CreateClientUseCase {
         if (clientExists) {
             throw new Error("Client already exists")
         }
-
         const hasPassword = await hash(password,10);
-
-       const client = await prisma.clients.create({
+        const client = await prisma.clients.create({
             data: {
                 username,
                 password: hasPassword,
             }
         })
-
         return client;
     }
 }
