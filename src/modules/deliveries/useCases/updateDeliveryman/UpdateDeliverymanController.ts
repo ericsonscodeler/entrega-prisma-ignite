@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UpdateDeliverymanUseCase } from "./useCases/UpdateDeliverymanUseCase";
+import { UpdateDeliverymanUseCase } from "./UpdateDeliverymanUseCase";
 
 export class UpdateDeliverymanController {
     async handle(request: Request, response: Response){
